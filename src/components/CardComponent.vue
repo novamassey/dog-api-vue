@@ -72,9 +72,13 @@ export default {
   height: 200px;
   background-size: cover;
 }
-.dog {
-  background-size: cover;
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
 }
+
 .is-front {
   background-color: magenta;
   background-size: cover;
