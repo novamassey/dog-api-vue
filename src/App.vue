@@ -1,13 +1,17 @@
 <template>
   <h1>Dog API</h1>
   <button @click="fetchData">Get Dog</button>
+  <section class="container">
+    <CardComponent v-for="card in cardArray" :key="card" />
+  </section>
 </template>
 
 <script>
 import axios from "axios";
+import CardComponent from "./components/CardComponent.vue";
 export default {
   name: "App",
-  components: {},
+  components: { CardComponent },
   data() {
     return {
       dog: {},
@@ -19,9 +23,9 @@ export default {
   },
   methods: {
     createCards() {
-      for (let i = 0; i < 11; i++) {
-        this.cardArray.push(i);
-        console.log(this.cardArray);
+      for (let i = 0; i < 10; i++) {
+        this.cardArray.push({ value: i, visible: false, position: i });
+        console.log("cardArray", this.cardArray);
       }
     },
     fetchData() {
@@ -42,5 +46,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 300px);
+  grid-template-rows: repeat(2, 300px);
+  column-gap: 30px;
+  row-gap: 30px;
+  justify-content: center;
 }
 </style>
