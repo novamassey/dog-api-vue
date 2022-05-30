@@ -7,6 +7,7 @@
       :position="index"
       :value="card.value"
       :visible="card.visible"
+      :name="card.name"
       @card-choice="toggleCard"
     />
   </section>
@@ -22,7 +23,6 @@ export default {
     return {
       dog: {},
       cardArray: [],
-      dogImage: "",
     };
   },
   mounted() {
@@ -31,26 +31,29 @@ export default {
   methods: {
     createCards() {
       for (let i = 0; i < 10; i++) {
-        this.cardArray.push({ value: "", visible: false, position: i });
-        console.log("cardArray", this.cardArray);
+        this.cardArray.push({
+          value: "",
+          visible: false,
+          position: i,
+          name: "",
+        });
       }
-    },
-    fetchData() {
-      axios.get("https://dog.ceo/api/breeds/image/random").then((response) => {
-        this.dog = response.data;
-        console.log(this.dog);
-      });
     },
     async toggleCard(payload) {
       await axios
         .get("https://dog.ceo/api/breeds/image/random")
         .then((response) => {
           this.dog = response.data;
-          console.log(this.dog);
+
           try {
             this.cardArray[payload.position].value = this.dog.message;
             this.cardArray[payload.position].visible = true;
-            console.log("dog", this.dog.message);
+
+            const url = new URL(this.dog.message);
+            const path = url.pathname.substring(8);
+            const breed = path.split("/");
+            this.cardArray[payload.position].name = breed[0].toUpperCase();
+
             setTimeout(() => {
               this.cardArray[payload.position].visible = false;
             }, 2000);
@@ -78,6 +81,6 @@ export default {
   grid-template-rows: repeat(2, 300px);
   column-gap: 30px;
   row-gap: 30px;
-  justify-content: center;
+  margin: 0 auto;
 }
 </style>

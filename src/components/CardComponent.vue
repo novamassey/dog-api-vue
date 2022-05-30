@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="cardChoice">
-    <div class="header" v-if="visible">Doggo!</div>
+    <div class="header" v-if="visible">{{ name }}</div>
     <div class="body is-front" v-if="visible">
       <img :src="`${value}`" class="dog" />
     </div>
@@ -28,12 +28,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    name: {
+      type: String,
+      required: true,
+    },
   },
   setup(props, context) {
     const cardChoice = () => {
       context.emit("card-choice", {
         position: props.position,
         value: props.value,
+        name: props.name,
       });
     };
     return {
@@ -45,8 +50,8 @@ export default {
 
 <style>
 .card {
-  height: 300px;
-  width: 300px;
+  height: 280px;
+  width: 280px;
   border: 7px solid gray;
   border-radius: 5%;
   margin-left: 30px;
@@ -72,7 +77,7 @@ export default {
   background-size: cover;
 }
 .body.is-front {
-  height: 240px;
+  height: 220px;
   background-size: cover;
 }
 img {
