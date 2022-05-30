@@ -1,15 +1,15 @@
 <template>
   <div class="card" @click="cardChoice">
-    <div class="header" v-if="visible">
-      Index:{{ value }} Visible:{{ visible }}
-    </div>
+    <div class="header" v-if="visible">Doggo!</div>
     <div class="body is-front" v-if="visible">
       <img :src="`${value}`" class="dog" />
     </div>
     <div class="body is-back" v-else>
       <img src="../../public/images/dog.png" />
     </div>
-    <div class="footer" v-if="visible"></div>
+    <div class="footer" v-if="visible">
+      <a class="api" href="https://dog.ceo/dog-api/" target="_blank">DOG API</a>
+    </div>
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
 .card {
   height: 300px;
   width: 300px;
-  border: 4px solid gray;
+  border: 7px solid gray;
   border-radius: 5%;
   margin-left: 30px;
   margin-right: 30px;
@@ -55,12 +55,15 @@ export default {
 .header {
   display: block;
   border-bottom: 4px solid gray;
-  height: 50px;
+  height: 20px;
+  padding: 2px;
 }
 .body {
   height: 100%;
   background-size: cover;
+  border-radius: 3%;
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
@@ -69,7 +72,7 @@ export default {
   background-size: cover;
 }
 .body.is-front {
-  height: 200px;
+  height: 240px;
   background-size: cover;
 }
 img {
@@ -77,10 +80,13 @@ img {
   height: 100%;
   object-fit: cover;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1, 1);
 }
 
 .is-front {
-  background-color: magenta;
   background-size: cover;
 }
 .is-back {
@@ -90,6 +96,12 @@ img {
 .footer {
   display: block;
   border-top: 4px solid gray;
-  height: 50px;
+  height: 20px;
+}
+.api {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <h1>Dog API</h1>
-  <button @click="fetchData">Get Dog</button>
   <section class="container">
     <CardComponent
       v-for="(card, index) in cardArray"
@@ -43,18 +42,22 @@ export default {
       });
     },
     async toggleCard(payload) {
-      this.cardArray[payload.position].visible = true;
       await axios
         .get("https://dog.ceo/api/breeds/image/random")
         .then((response) => {
           this.dog = response.data;
           console.log(this.dog);
+          try {
+            this.cardArray[payload.position].value = this.dog.message;
+            this.cardArray[payload.position].visible = true;
+            console.log("dog", this.dog.message);
+            setTimeout(() => {
+              this.cardArray[payload.position].visible = false;
+            }, 2000);
+          } catch (error) {
+            console.log(error.message);
+          }
         });
-      this.cardArray[payload.position].value = this.dog.message;
-      console.log("dog", this.dog.message);
-      setTimeout(() => {
-        this.cardArray[payload.position].visible = false;
-      }, 2000);
     },
   },
 };
