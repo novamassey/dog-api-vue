@@ -82,6 +82,6 @@ export default {
   grid-template-rows: repeat(2, 300px);
   column-gap: 30px;
   row-gap: 40px;
-  margin: 0 auto;
+  margin: 0 50px 0 50px;
 }
 </style>
