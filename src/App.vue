@@ -8,12 +8,14 @@
       :position="index"
       :value="card.value"
       :visible="card.visible"
+      @click="card.visible = !card.visible"
     />
   </section>
 </template>
 
 <script>
 import axios from "axios";
+import { ref } from "vue";
 import CardComponent from "./components/CardComponent.vue";
 export default {
   name: "App",
@@ -21,7 +23,7 @@ export default {
   data() {
     return {
       dog: {},
-      cardArray: [],
+      cardArray: ref([]),
       dogImage: "",
     };
   },
@@ -31,7 +33,7 @@ export default {
   methods: {
     createCards() {
       for (let i = 0; i < 10; i++) {
-        this.cardArray.push({ value: i, visible: true, position: i });
+        this.cardArray.push({ value: i, visible: false, position: i });
         console.log("cardArray", this.cardArray);
       }
     },

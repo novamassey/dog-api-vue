@@ -1,10 +1,12 @@
 <template>
-  <div class="card">
+  <div class="card" @click="card - choice">
     <div class="header" v-if="visible">
       Index:{{ value }} Visible:{{ visible }}
     </div>
     <div class="body is-front" v-if="visible"></div>
-    <div class="body is-back" v-else></div>
+    <div class="body is-back" v-else>
+      <img src="../../public/images/dog.png" />
+    </div>
     <div class="footer" v-if="visible"></div>
   </div>
 </template>
@@ -24,6 +26,17 @@ export default {
       type: Boolean,
       default: false,
     },
+  },
+  setup(props, context) {
+    const cardChoice = () => {
+      context.emit("card-choice", {
+        position: props.position,
+        visible: props.visible,
+      });
+    };
+    return {
+      cardChoice,
+    };
   },
 };
 </script>
