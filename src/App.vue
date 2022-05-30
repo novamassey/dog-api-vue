@@ -32,7 +32,7 @@ export default {
   methods: {
     createCards() {
       for (let i = 0; i < 10; i++) {
-        this.cardArray.push({ value: i, visible: false, position: i });
+        this.cardArray.push({ value: "", visible: false, position: i });
         console.log("cardArray", this.cardArray);
       }
     },
@@ -42,8 +42,16 @@ export default {
         console.log(this.dog);
       });
     },
-    toggleCard(payload) {
+    async toggleCard(payload) {
       this.cardArray[payload.position].visible = true;
+      await axios
+        .get("https://dog.ceo/api/breeds/image/random")
+        .then((response) => {
+          this.dog = response.data;
+          console.log(this.dog);
+        });
+      this.cardArray[payload.position].value = this.dog.message;
+      console.log("dog", this.dog.message);
       setTimeout(() => {
         this.cardArray[payload.position].visible = false;
       }, 2000);

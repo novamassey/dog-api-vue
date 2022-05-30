@@ -15,7 +15,7 @@
 export default {
   props: {
     value: {
-      type: Number,
+      type: String,
       required: true,
     },
     position: {
@@ -31,6 +31,7 @@ export default {
     const cardChoice = () => {
       context.emit("card-choice", {
         position: props.position,
+        value: props.value,
       });
     };
     return {
