@@ -8,14 +8,13 @@
       :position="index"
       :value="card.value"
       :visible="card.visible"
-      @click="card.visible = !card.visible"
+      @card-choice="toggleCard"
     />
   </section>
 </template>
 
 <script>
 import axios from "axios";
-import { ref } from "vue";
 import CardComponent from "./components/CardComponent.vue";
 export default {
   name: "App",
@@ -23,7 +22,7 @@ export default {
   data() {
     return {
       dog: {},
-      cardArray: ref([]),
+      cardArray: [],
       dogImage: "",
     };
   },
@@ -42,6 +41,12 @@ export default {
         this.dog = response.data;
         console.log(this.dog);
       });
+    },
+    toggleCard(payload) {
+      this.cardArray[payload.position].visible = true;
+      setTimeout(() => {
+        this.cardArray[payload.position].visible = false;
+      }, 2000);
     },
   },
 };

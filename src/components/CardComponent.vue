@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="card - choice">
+  <div class="card" @click="cardChoice">
     <div class="header" v-if="visible">
       Index:{{ value }} Visible:{{ visible }}
     </div>
@@ -31,7 +31,6 @@ export default {
     const cardChoice = () => {
       context.emit("card-choice", {
         position: props.position,
-        visible: props.visible,
       });
     };
     return {
