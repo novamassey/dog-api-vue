@@ -1,9 +1,28 @@
 <template>
-  <div class="card">{{ card }}</div>
+  <div class="card">
+    Index:{{ value }} Visible:{{ visible }}
+    <div></div>
+    <div></div>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    value: {
+      type: Number,
+      required: true,
+    },
+    position: {
+      type: Number,
+      required: true,
+    },
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
 
 <style>

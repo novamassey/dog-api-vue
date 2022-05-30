@@ -2,7 +2,13 @@
   <h1>Dog API</h1>
   <button @click="fetchData">Get Dog</button>
   <section class="container">
-    <CardComponent v-for="card in cardArray" :key="card" />
+    <CardComponent
+      v-for="(card, index) in cardArray"
+      :key="index"
+      :position="index"
+      :value="card.value"
+      :visible="card.visible"
+    />
   </section>
 </template>
 
@@ -16,6 +22,7 @@ export default {
     return {
       dog: {},
       cardArray: [],
+      dogImage: "",
     };
   },
   mounted() {
