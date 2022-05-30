@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="cardChoice">
+  <div class="card" @click="cardChoice" @keyup.enter="cardChoice" tabindex="0">
     <div class="header" v-if="visible">{{ name }}</div>
     <div class="body is-front" v-if="visible">
       <img :src="`${value}`" class="dog" />

@@ -1,5 +1,6 @@
 <template>
   <h1>Dog API</h1>
+  <p>Click a Card to Fetch a Pup!</p>
   <section class="container">
     <CardComponent
       v-for="(card, index) in cardArray"
