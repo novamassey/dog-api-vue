@@ -54,8 +54,7 @@ export default {
   width: 280px;
   border: 7px solid gray;
   border-radius: 5%;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin: auto;
 }
 .header {
   display: block;

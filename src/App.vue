@@ -80,7 +80,7 @@ export default {
   grid-template-columns: repeat(5, 300px);
   grid-template-rows: repeat(2, 300px);
   column-gap: 30px;
-  row-gap: 30px;
+  row-gap: 40px;
   margin: 0 auto;
 }
 </style>
