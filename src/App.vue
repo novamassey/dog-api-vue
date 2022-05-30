@@ -31,7 +31,7 @@ export default {
   methods: {
     createCards() {
       for (let i = 0; i < 10; i++) {
-        this.cardArray.push({ value: i, visible: false, position: i });
+        this.cardArray.push({ value: i, visible: true, position: i });
         console.log("cardArray", this.cardArray);
       }
     },

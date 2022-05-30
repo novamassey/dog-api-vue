@@ -1,9 +1,11 @@
 <template>
   <div class="card">
-    <div class="header">Index:{{ value }} Visible:{{ visible }}</div>
-    <div class="body" v-if="visible"></div>
-    <div class="body" v-else></div>
-    <div class="footer"></div>
+    <div class="header" v-if="visible">
+      Index:{{ value }} Visible:{{ visible }}
+    </div>
+    <div class="body is-front" v-if="visible"></div>
+    <div class="body is-back" v-else></div>
+    <div class="footer" v-if="visible"></div>
   </div>
 </template>
 
@@ -41,7 +43,26 @@ export default {
   height: 50px;
 }
 .body {
+  height: 100%;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.body .is-back {
+  height: 100%;
+  background-size: cover;
+}
+.body.is-front {
   height: 200px;
+}
+.is-front {
+  background-color: magenta;
+  background-size: cover;
+}
+.is-back {
+  background-color: turquoise;
+  background-size: cover;
 }
 .footer {
   display: block;
