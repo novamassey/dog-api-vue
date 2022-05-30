@@ -3,7 +3,9 @@
     <div class="header" v-if="visible">
       Index:{{ value }} Visible:{{ visible }}
     </div>
-    <div class="body is-front" v-if="visible"></div>
+    <div class="body is-front" v-if="visible">
+      <img :src="`${value}`" class="dog" />
+    </div>
     <div class="body is-back" v-else>
       <img src="../../public/images/dog.png" />
     </div>
@@ -68,6 +70,10 @@ export default {
 }
 .body.is-front {
   height: 200px;
+  background-size: cover;
+}
+.dog {
+  background-size: cover;
 }
 .is-front {
   background-color: magenta;
