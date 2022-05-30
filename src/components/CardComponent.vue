@@ -1,8 +1,9 @@
 <template>
   <div class="card">
-    Index:{{ value }} Visible:{{ visible }}
-    <div></div>
-    <div></div>
+    <div class="header">Index:{{ value }} Visible:{{ visible }}</div>
+    <div class="body" v-if="visible"></div>
+    <div class="body" v-else></div>
+    <div class="footer"></div>
   </div>
 </template>
 
@@ -33,5 +34,18 @@ export default {
   border-radius: 5%;
   margin-left: 30px;
   margin-right: 30px;
+}
+.header {
+  display: block;
+  border-bottom: 4px solid gray;
+  height: 50px;
+}
+.body {
+  height: 200px;
+}
+.footer {
+  display: block;
+  border-top: 4px solid gray;
+  height: 50px;
 }
 </style>
